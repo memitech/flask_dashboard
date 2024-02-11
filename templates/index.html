@@ -1,15 +1,57 @@
-{% extends 'base.html' %}
-{% block content %}
-    <h1>Welcome to My Flask App</h1>
-    <p>This is the homepage of my Flask web application.</p>
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Section 1</h2>
-            <p>This is the content of section 1.</p>
-        </div>
-        <div class="col-md-6">
-            <h2>Section 2</h2>
-            <p>This is the content of section 2.</p>
-        </div>
-    </div>
+{% extends 'base.html' %} {% block content %}
+
+<h1>Welcome to My Flask App</h1>
+<p>This is the homepage of my Flask web application.</p>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Members</h2>
+    {% if members == [] %}
+    <p>There are no members yet.</p>
+    {% else %}
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Country</th>
+      </tr>
+      {% for member in members %}
+      <tr>
+        <td>{{ member.name }}</td>
+        <td>{{ member.phone }}</td>
+        <td>{{ member.country }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+
+    <!-- main.py > form 関数 -->
+    <a href="{{ url_for('form')}}">編集</a>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Events</h2>
+    {% if events == [] %}
+    <p>There are no events yet.</p>
+    {% else %}
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Venue</th>
+        <th>Date</th>
+      </tr>
+      {% for event in events %}
+      <tr>
+        <td>{{ event.title }}</td>
+        <td>{{ event.venue }}</td>
+        <td>{{ event.date }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+
+
+    <a href="{{ url_for('form')}}">編集</a>
+  </div>
+</div>
 {% endblock %}
