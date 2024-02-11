@@ -1,0 +1,21 @@
+# 環境設定ファイル
+.venv
+
+# ログファイル
+*.log
+
+# 依存関係ディレクトリ
+node_modules/
+
+# ビルド出力
+/dist
+
+# モジュール
+*.pyc
+
+# キャッシュ
+__pycache__/
+
+# DB関係
+db-volumes/
+db.sqlite3
